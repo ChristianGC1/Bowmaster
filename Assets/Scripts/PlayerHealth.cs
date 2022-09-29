@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = 0f;
             healthSlider.value = health;
-            Destroy(gameObject);
+            GetComponent<Bowmaster>().Dead();
         }
     }
 

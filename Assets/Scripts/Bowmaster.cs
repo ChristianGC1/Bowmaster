@@ -64,4 +64,11 @@ public class Bowmaster : MonoBehaviour
     //{
     //    dust.Play();
     //}
+
+    public void Dead()
+    {
+        rb.velocity = Vector2.zero;
+
+        this.enabled = false;
+    }
 }

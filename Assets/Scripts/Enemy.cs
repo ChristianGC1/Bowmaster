@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
     public AudioSource enemyHit;
     public AudioClip enemyHitClip;
 
+    [SerializeField] FlashColored flashEffect;
+
     private void Start()
     {
         health = maxHealth;
@@ -63,6 +65,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Arrow")
         {
             enemyHit.PlayOneShot(enemyHitClip);
+            FlashOnHit();
         }
     }
 
@@ -96,5 +99,9 @@ public class Enemy : MonoBehaviour
         {
             target = null;
         }
+    }
+    public void FlashOnHit()
+    {
+        flashEffect.Flash(Color.red);
     }
 }
