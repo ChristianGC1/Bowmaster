@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 2036fd53989bb6845874af406e68c0e5, type: 2}
-  duration: 0.125
+  duration: 0.5
 --- !u!114 &2586820067677230892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +123,6 @@ MonoBehaviour:
   maxHealth: 15
   enemyHit: {fileID: 7698383193562876780}
   enemyHitClip: {fileID: 8300000, guid: ded2fd0f6a245c04f8e2040461c94cf5, type: 3}
-  flashEffect: {fileID: 0}
 --- !u!50 &2586820067677230894
 Rigidbody2D:
   serializedVersion: 4

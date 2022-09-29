@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed = 3f;
     [Header("Attack")]
     [SerializeField] private float attackDamage = 10f;
-    [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private float attackSpeed = 5f;
     private float canAttack;
 
     [Header("Health")]
@@ -19,8 +19,6 @@ public class Enemy : MonoBehaviour
 
     public AudioSource enemyHit;
     public AudioClip enemyHitClip;
-
-    [SerializeField] FlashColored flashEffect;
 
     private void Start()
     {
@@ -65,7 +63,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Arrow")
         {
             enemyHit.PlayOneShot(enemyHitClip);
-            FlashOnHit();
+            //GetComponent<FlashColored>().Flash(Color.red);
         }
     }
 
@@ -99,9 +97,5 @@ public class Enemy : MonoBehaviour
         {
             target = null;
         }
-    }
-    public void FlashOnHit()
-    {
-        flashEffect.Flash(Color.red);
     }
 }

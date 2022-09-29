@@ -67,8 +67,15 @@ public class Bowmaster : MonoBehaviour
 
     public void Dead()
     {
-        rb.velocity = Vector2.zero;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+    }
 
-        this.enabled = false;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Portal")
+        {
+            //GetComponent<Portal>().WinGame();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        }
     }
 }
