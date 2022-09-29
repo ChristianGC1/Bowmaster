@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Bowmaster : MonoBehaviour
 {
+    //public ParticleSystem dust;
+
+    [Header("Health")]
+    private float health;
+    [SerializeField] private float maxHealth;
+
+    public AudioSource footSteps;
+
     public Animator animatior;
 
     public float moveSpeed;
@@ -38,5 +46,22 @@ public class Bowmaster : MonoBehaviour
         float my = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(mx, my).normalized;
+
+        //if(movement != Vector2.zero)
+        //{
+        //    if (!footSteps.isPlaying)
+        //    {
+        //        footSteps.Play();
+        //    }
+        //    else
+        //    {
+        //        footSteps.Stop();
+        //    }
+        //}
     }
+
+    //void CreateDust()
+    //{
+    //    dust.Play();
+    //}
 }

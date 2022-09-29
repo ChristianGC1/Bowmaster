@@ -9,6 +9,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] SpriteRenderer ArrowGFX;
     [SerializeField] Slider BowPowerSlider;
     [SerializeField] Transform Bow;
+    [SerializeField] private AudioSource bowPullSoundEffect;
+    [SerializeField] private AudioSource bowReleaseSoundEffect;
+    public AudioClip bowPullSoundClip;
+    public bool alreadyPlayed = false;
 
     [Range(0, 10)]
     [SerializeField] float BowPower;
@@ -29,11 +33,17 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && CanFire)
         {
+            if (!alreadyPlayed)
+            {
+                bowPullSoundEffect.PlayOneShot(bowPullSoundClip);
+                alreadyPlayed = true;
+            }
             ChargeBow();
         }
         else if (Input.GetMouseButtonUp(0) && CanFire)
         {
             FireBow();
+            alreadyPlayed = false;
         }
         else
         {
@@ -55,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
     {
         ArrowGFX.enabled = true;
 
-        BowCharge += Time.deltaTime;
+        BowCharge += 2.5f * Time.deltaTime;
 
         BowPowerSlider.value = BowCharge;
 
@@ -69,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (BowCharge > MaxBowCharge) BowCharge = MaxBowCharge;
 
-        float ArrowSpeed = BowCharge + BowPower;
+        float ArrowSpeed = BowCharge + BowPower * 2f;
         float ArrowDamage = BowCharge * BowPower;
 
         float angle = Utility.AngleTowardsMouse(Bow.position);
@@ -78,6 +88,8 @@ public class PlayerAttack : MonoBehaviour
         Arrow Arrow = Instantiate(ArrowPrefab, Bow.position, rot).GetComponent<Arrow>();
         Arrow.ArrowVelocity = ArrowSpeed;
         Arrow.ArrowDamage = ArrowDamage;
+
+        bowReleaseSoundEffect.Play();
 
         CanFire = false;
         ArrowGFX.enabled = false;

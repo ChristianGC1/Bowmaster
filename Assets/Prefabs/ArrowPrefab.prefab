@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 939808660529579761}
   m_Layer: 7
   m_Name: ArrowPrefab
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,4 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowVelocity: 0
+  ArrowDamage: 0
   rb: {fileID: 6700851036426414915}

@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
 
     private Transform target;
 
+    public AudioSource enemyHit;
+    public AudioClip enemyHitClip;
+
     private void Start()
     {
         health = maxHealth;
@@ -55,6 +58,11 @@ public class Enemy : MonoBehaviour
             {
                 canAttack += Time.deltaTime;
             }
+        }
+
+        if (other.gameObject.tag == "Arrow")
+        {
+            enemyHit.PlayOneShot(enemyHitClip);
         }
     }
 
